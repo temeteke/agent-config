@@ -16,12 +16,12 @@ SKILL_REMOVE_FLAGS ?= -y
 .PHONY: install-claude-code uninstall-claude-code
 .PHONY: install-opencode uninstall-opencode
 .PHONY: install-cline uninstall-cline
-.PHONY: install-roo-code uninstall-roo-code
+.PHONY: install-roo uninstall-roo
 .PHONY: update-skills list-skills
 
-install: install-codex install-claude-code install-opencode install-cline install-roo-code
+install: install-codex install-claude-code install-opencode install-cline install-roo
 
-uninstall: uninstall-codex uninstall-claude-code uninstall-opencode uninstall-cline uninstall-roo-code
+uninstall: uninstall-codex uninstall-claude-code uninstall-opencode uninstall-cline uninstall-roo
 
 define install_instructions
 	@mkdir -p "$(dir $(2))"
@@ -59,12 +59,12 @@ define install_skills_for_agent
 		source="$$1"; \
 		skill="$$2"; \
 		command -v npx >/dev/null 2>&1 || { echo "error: npx not found" >&2; exit 1; }; \
-		echo "install skill: $$source / $$skill -> $(1)"; \
+			echo "install skill: $$source / $$skill -> $(1)"; \
 		npx skills add "$$source" \
 			--skill "$$skill" \
 			--agent "$(1)" \
 			$(SKILL_SCOPE) \
-			$(SKILL_INSTALL_FLAGS); \
+			$(SKILL_INSTALL_FLAGS) < /dev/null; \
 	done < "$(SKILL_MANIFEST)"
 endef
 
@@ -123,13 +123,13 @@ uninstall-cline:
 	$(call uninstall_instructions,$(PREFIX)/Documents/Cline/Rules/00-global.md)
 	$(call uninstall_skills_for_agent,cline)
 
-install-roo-code:
-	$(call install_instructions,roo-code,$(PREFIX)/.roo/rules/00-global.md)
-	$(call install_skills_for_agent,roo-code)
+install-roo:
+	$(call install_instructions,roo,$(PREFIX)/.roo/rules/00-global.md)
+	$(call install_skills_for_agent,roo)
 
-uninstall-roo-code:
+uninstall-roo:
 	$(call uninstall_instructions,$(PREFIX)/.roo/rules/00-global.md)
-	$(call uninstall_skills_for_agent,roo-code)
+	$(call uninstall_skills_for_agent,roo)
 
 update-skills:
 	@command -v npx >/dev/null 2>&1 || { echo "error: npx not found" >&2; exit 1; }

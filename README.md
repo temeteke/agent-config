@@ -1,4 +1,4 @@
-# agent-coding-config
+# agent-config
 
 Personal configuration for coding agents.
 

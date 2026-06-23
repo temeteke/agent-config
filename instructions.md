@@ -4,7 +4,7 @@ Respond in Japanese unless explicitly instructed otherwise.
 
 ## Git
 
-Git write actions require explicit user approval each time; approvals are single-use and expire immediately after the approved action completes.
+Never commit, push, or create PRs unless the user explicitly says "commit" or "push" in the *current* message. Past approvals do not carry over — each Git write action requires fresh, explicit permission in the same turn.
 
 ## GitLab
 

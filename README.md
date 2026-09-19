@@ -20,10 +20,22 @@ Those files are generated only at install destinations.
 
 ## Usage
 
-Install all supported tools:
+Install all managed configuration and CLI binaries:
 
 ```sh
 make install
+```
+
+Install only configuration (instructions and skills):
+
+```sh
+make install-config
+```
+
+Install only CLI binaries:
+
+```sh
+make install-bin
 ```
 
 Install only Codex instructions:
@@ -38,7 +50,7 @@ Install only Claude Code instructions:
 make install-instructions-claude-code
 ```
 
-Uninstall all supported tools:
+Uninstall all managed configuration and CLI binaries:
 
 ```sh
 make uninstall
@@ -58,6 +70,10 @@ make list-skills
 
 ## Supported targets
 
+- `make install-config`
+- `make uninstall-config`
+- `make install-bin`
+- `make uninstall-bin`
 - `make install-tools`
 - `make uninstall-tools`
 - `make install-tools-codex`
@@ -82,7 +98,8 @@ Skills are managed separately with `make install-skills` and `make uninstall-ski
 
 ## CLI tools
 
-`make install-tools` installs the CLI tool packages globally:
+`make install-bin` installs the CLI tool packages globally through the existing `install-tools` target. `install-tools` is kept as a compatibility target:
+
 
 - `make install-tools-codex`: `@openai/codex`
 - `make install-tools-claude-code`: `@anthropic-ai/claude-code`

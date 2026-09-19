@@ -22,10 +22,9 @@ OPENCODE_PACKAGE ?= opencode-ai
 .PHONY: install uninstall
 .PHONY: install-config uninstall-config
 .PHONY: install-bin uninstall-bin
-.PHONY: install-tools uninstall-tools
-.PHONY: install-tools-codex uninstall-tools-codex
-.PHONY: install-tools-claude-code uninstall-tools-claude-code
-.PHONY: install-tools-opencode uninstall-tools-opencode
+.PHONY: install-bin-codex uninstall-bin-codex
+.PHONY: install-bin-claude-code uninstall-bin-claude-code
+.PHONY: install-bin-opencode uninstall-bin-opencode
 .PHONY: install-instructions uninstall-instructions
 .PHONY: install-skills uninstall-skills
 .PHONY: install-instructions-codex uninstall-instructions-codex
@@ -43,35 +42,31 @@ install-config: install-instructions install-skills
 
 uninstall-config: uninstall-instructions uninstall-skills
 
-install-bin: install-tools
+install-bin: install-bin-codex install-bin-claude-code install-bin-opencode
 
-uninstall-bin: uninstall-tools
+uninstall-bin: uninstall-bin-codex uninstall-bin-claude-code uninstall-bin-opencode
 
-install-tools: install-tools-codex install-tools-claude-code install-tools-opencode
-
-uninstall-tools: uninstall-tools-codex uninstall-tools-claude-code uninstall-tools-opencode
-
-install-tools-codex:
+install-bin-codex:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
 	npm install -g $(CODEX_PACKAGE)
 
-uninstall-tools-codex:
+uninstall-bin-codex:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
 	npm uninstall -g $(CODEX_PACKAGE)
 
-install-tools-claude-code:
+install-bin-claude-code:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
 	npm install -g $(CLAUDE_CODE_PACKAGE)
 
-uninstall-tools-claude-code:
+uninstall-bin-claude-code:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
 	npm uninstall -g $(CLAUDE_CODE_PACKAGE)
 
-install-tools-opencode:
+install-bin-opencode:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
 	npm install -g $(OPENCODE_PACKAGE)
 
-uninstall-tools-opencode:
+uninstall-bin-opencode:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
 	npm uninstall -g $(OPENCODE_PACKAGE)
 

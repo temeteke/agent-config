@@ -96,8 +96,7 @@ Skills are managed separately with `make install-skills` and `make uninstall-ski
 
 ## CLI tools
 
-`make install-bin` installs the CLI tool packages globally through the existing `install-bin` target. `install-bin` is kept as a compatibility target:
-
+`make install-bin` installs the CLI tool packages globally:
 
 - `make install-bin-codex`: `@openai/codex`
 - `make install-bin-claude-code`: `@anthropic-ai/claude-code`

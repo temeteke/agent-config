@@ -74,14 +74,12 @@ make list-skills
 - `make uninstall-config`
 - `make install-bin`
 - `make uninstall-bin`
-- `make install-tools`
-- `make uninstall-tools`
-- `make install-tools-codex`
-- `make uninstall-tools-codex`
-- `make install-tools-claude-code`
-- `make uninstall-tools-claude-code`
-- `make install-tools-opencode`
-- `make uninstall-tools-opencode`
+- `make install-bin-codex`
+- `make uninstall-bin-codex`
+- `make install-bin-claude-code`
+- `make uninstall-bin-claude-code`
+- `make install-bin-opencode`
+- `make uninstall-bin-opencode`
 - `make install-instructions-codex`
 - `make install-instructions-claude-code`
 - `make install-instructions-opencode`
@@ -98,12 +96,12 @@ Skills are managed separately with `make install-skills` and `make uninstall-ski
 
 ## CLI tools
 
-`make install-bin` installs the CLI tool packages globally through the existing `install-tools` target. `install-tools` is kept as a compatibility target:
+`make install-bin` installs the CLI tool packages globally through the existing `install-bin` target. `install-bin` is kept as a compatibility target:
 
 
-- `make install-tools-codex`: `@openai/codex`
-- `make install-tools-claude-code`: `@anthropic-ai/claude-code`
-- `make install-tools-opencode`: `opencode-ai`
+- `make install-bin-codex`: `@openai/codex`
+- `make install-bin-claude-code`: `@anthropic-ai/claude-code`
+- `make install-bin-opencode`: `opencode-ai`
 
 Override `CODEX_PACKAGE`, `CLAUDE_CODE_PACKAGE`, or `OPENCODE_PACKAGE` to customize package names.
 

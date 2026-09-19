@@ -20,6 +20,8 @@ CLAUDE_CODE_PACKAGE ?= @anthropic-ai/claude-code
 OPENCODE_PACKAGE ?= opencode-ai
 
 .PHONY: install uninstall
+.PHONY: install-config uninstall-config
+.PHONY: install-bin uninstall-bin
 .PHONY: install-tools uninstall-tools
 .PHONY: install-tools-codex uninstall-tools-codex
 .PHONY: install-tools-claude-code uninstall-tools-claude-code
@@ -33,9 +35,17 @@ OPENCODE_PACKAGE ?= opencode-ai
 .PHONY: install-instructions-roo uninstall-instructions-roo
 .PHONY: update-skills list-skills
 
-install: install-tools install-instructions install-skills
+install: install-bin install-config
 
-uninstall: uninstall-instructions uninstall-skills uninstall-tools
+uninstall: uninstall-config uninstall-bin
+
+install-config: install-instructions install-skills
+
+uninstall-config: uninstall-instructions uninstall-skills
+
+install-bin: install-tools
+
+uninstall-bin: uninstall-tools
 
 install-tools: install-tools-codex install-tools-claude-code install-tools-opencode
 

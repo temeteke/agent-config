@@ -48,7 +48,8 @@ uninstall-bin: uninstall-bin-codex uninstall-bin-claude-code uninstall-bin-openc
 
 install-bin-codex:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
-	npm install -g $(CODEX_PACKAGE)
+	npm install -g --include=optional $(CODEX_PACKAGE)
+	@codex --version >/dev/null
 
 uninstall-bin-codex:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
@@ -56,7 +57,8 @@ uninstall-bin-codex:
 
 install-bin-claude-code:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
-	npm install -g $(CLAUDE_CODE_PACKAGE)
+	npm install -g --include=optional --allow-scripts=$(CLAUDE_CODE_PACKAGE) $(CLAUDE_CODE_PACKAGE)
+	@claude --version >/dev/null
 
 uninstall-bin-claude-code:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
@@ -64,7 +66,7 @@ uninstall-bin-claude-code:
 
 install-bin-opencode:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
-	npm install -g --allow-scripts=$(OPENCODE_PACKAGE) $(OPENCODE_PACKAGE)
+	npm install -g --include=optional --allow-scripts=$(OPENCODE_PACKAGE) $(OPENCODE_PACKAGE)
 	@opencode --version >/dev/null
 
 uninstall-bin-opencode:

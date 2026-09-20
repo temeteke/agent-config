@@ -20,10 +20,22 @@ Those files are generated only at install destinations.
 
 ## Usage
 
-Install all supported tools:
+Install all managed configuration and CLI binaries:
 
 ```sh
 make install
+```
+
+Install only configuration (instructions and skills):
+
+```sh
+make install-config
+```
+
+Install only CLI binaries:
+
+```sh
+make install-bin
 ```
 
 Install only Codex instructions:
@@ -38,7 +50,7 @@ Install only Claude Code instructions:
 make install-instructions-claude-code
 ```
 
-Uninstall all supported tools:
+Uninstall all managed configuration and CLI binaries:
 
 ```sh
 make uninstall
@@ -58,14 +70,16 @@ make list-skills
 
 ## Supported targets
 
-- `make install-tools`
-- `make uninstall-tools`
-- `make install-tools-codex`
-- `make uninstall-tools-codex`
-- `make install-tools-claude-code`
-- `make uninstall-tools-claude-code`
-- `make install-tools-opencode`
-- `make uninstall-tools-opencode`
+- `make install-config`
+- `make uninstall-config`
+- `make install-bin`
+- `make uninstall-bin`
+- `make install-bin-codex`
+- `make uninstall-bin-codex`
+- `make install-bin-claude-code`
+- `make uninstall-bin-claude-code`
+- `make install-bin-opencode`
+- `make uninstall-bin-opencode`
 - `make install-instructions-codex`
 - `make install-instructions-claude-code`
 - `make install-instructions-opencode`
@@ -82,11 +96,11 @@ Skills are managed separately with `make install-skills` and `make uninstall-ski
 
 ## CLI tools
 
-`make install-tools` installs the CLI tool packages globally:
+`make install-bin` installs the CLI tool packages globally:
 
-- `make install-tools-codex`: `@openai/codex`
-- `make install-tools-claude-code`: `@anthropic-ai/claude-code`
-- `make install-tools-opencode`: `opencode-ai`
+- `make install-bin-codex`: `@openai/codex`
+- `make install-bin-claude-code`: `@anthropic-ai/claude-code`
+- `make install-bin-opencode`: `opencode-ai`
 
 Override `CODEX_PACKAGE`, `CLAUDE_CODE_PACKAGE`, or `OPENCODE_PACKAGE` to customize package names.
 

@@ -64,7 +64,8 @@ uninstall-bin-claude-code:
 
 install-bin-opencode:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }
-	npm install -g $(OPENCODE_PACKAGE)
+	npm install -g --allow-scripts=$(OPENCODE_PACKAGE) $(OPENCODE_PACKAGE)
+	@opencode --version >/dev/null
 
 uninstall-bin-opencode:
 	@command -v npm >/dev/null 2>&1 || { echo "error: npm not found" >&2; exit 1; }

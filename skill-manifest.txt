@@ -3,3 +3,4 @@ vercel-labs/skills find-skills web-design-guidelines
 https://gitlab.com/gitlab-org/ai/skills.git glab
 anthropics/skills frontend-design
 microsoft/playwright-cli playwright-cli
+nanaism/yomiyasu yomiyasu
